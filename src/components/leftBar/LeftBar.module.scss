@@ -1,0 +1,14 @@
+.leftBar{
+    height: 100%;
+    width: 150px;
+    background-color: green;
+
+    ul{
+        font-size: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-left: 20px;
+        height: 200px;
+    }
+}

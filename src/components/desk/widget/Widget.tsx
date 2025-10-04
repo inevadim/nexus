@@ -4,10 +4,11 @@ import { FullWidget } from "../fullWidget/FullWidget";
 
 interface WidgetProps {
     type: string;
+    component: React.ComponentType;
     onRemove?: () => void;
 }
 
-export const Widget = ({ type, onRemove }: WidgetProps) => {
+export const Widget = ({ type, component: Component, onRemove }: WidgetProps) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
 
     const handleOpenFull = () => {
@@ -41,16 +42,18 @@ export const Widget = ({ type, onRemove }: WidgetProps) => {
                     </div>
                 </div>
                 <div className={styles.widgetPreview}>
-                
+                    <Component />
                 </div>
+                
             </div>
-            
             {isFullScreen && (
                 <FullWidget 
                     type={type} 
+                    component={Component}
                     onClose={handleCloseFull} 
                 />
             )}
+            
         </>
     );
 };

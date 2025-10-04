@@ -1,38 +1,37 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
-interface WidgetItem {
+interface Widget {
     id: string;
     type: string;
+    component: React.ComponentType;
 }
 
-export interface WidgetState {
-  value: WidgetItem[]
+interface WidgetsState {
+    value: Widget[];
 }
 
-const initialState: WidgetState = {
-  value: [],
-}
+const initialState: WidgetsState = {
+    value: []
+};
 
-export const widgetSlice = createSlice({
-  name: 'widget',
-  initialState,
-  reducers: {
-    addWidget: (state, action: PayloadAction<string>) => {
-        if (state.value.length < 8) {
-            state.value.push({ 
-                id: crypto.randomUUID(),
-                type: action.payload 
-            })
+export const widgetsSlice = createSlice({
+    name: 'widgets',
+    initialState,
+    reducers: {
+        addWidget: (state, action: PayloadAction<{ type: string; component: React.ComponentType }>) => {
+            const newWidget: Widget = {
+                id: Date.now().toString(),
+                type: action.payload.type,
+                component: action.payload.component
+            };
+            state.value.push(newWidget);
+        },
+        removeWidget: (state, action: PayloadAction<string>) => {
+            state.value = state.value.filter(widget => widget.id !== action.payload);
         }
-    },
-    removeWidget: (state, action: PayloadAction<string>) => {
-        state.value = state.value.filter(widget => widget.id !== action.payload)
-    },
-    clearWidgets: (state) => {
-        state.value = []
-    },
-  },
-})
+    }
+});
 
-export const { addWidget, removeWidget, clearWidgets } = widgetSlice.actions
-export default widgetSlice.reducer
+export const { addWidget, removeWidget } = widgetsSlice.actions;
+export default widgetsSlice.reducer;

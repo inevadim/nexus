@@ -2,12 +2,20 @@ import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import styles from "./Modal.module.scss";
 import { changeVisible } from "./../../app/model/features/modal/modalSlice";
+import { Eat } from "../../widgets/fitness/eat/Eat"
+import { Training } from "../../widgets/training/Training";
 
 interface ModalProps {
-    onAddWidget: (type: string) => void;
+    onAddWidget: (type: string, component: React.ComponentType) => void;
 }
 
 type ModalContent = 'main' | 'nutrition' | 'training';
+
+const widgetComponents = {
+    'Питание': Eat,
+    'Тренировки': Training,
+
+};
 
 export const Modal = ({ onAddWidget }: ModalProps) => {
     const dispatch = useDispatch();
@@ -17,8 +25,8 @@ export const Modal = ({ onAddWidget }: ModalProps) => {
         dispatch(changeVisible());
     }
 
-    const handleAddWidget = (type: string) => {
-        onAddWidget(type);
+    const handleAddWidget = (type: keyof typeof widgetComponents) => {
+        onAddWidget(type, widgetComponents[type]);
         handleClose();
     }
 
@@ -30,9 +38,9 @@ export const Modal = ({ onAddWidget }: ModalProps) => {
         <div className={styles.content}>
             <h3>Питание</h3>
             <p>Выберите тип виджета питания:</p>
-            <button onClick={() => handleAddWidget('nutrition-calories')}>Калории</button>
-            <button onClick={() => handleAddWidget('nutrition-water')}>Вода</button>
-            <button onClick={() => handleAddWidget('nutrition-meals')}>Приемы пищи</button>
+            <button onClick={() => handleAddWidget('Питание')}>
+                Виджет питания
+            </button>
             <button onClick={handleBackToMain}>Назад</button>
         </div>
     );
@@ -41,9 +49,10 @@ export const Modal = ({ onAddWidget }: ModalProps) => {
         <div className={styles.content}>
             <h3>Тренировки</h3>
             <p>Выберите тип виджета тренировок:</p>
-            <button onClick={() => handleAddWidget('training-steps')}>Шаги</button>
-            <button onClick={() => handleAddWidget('training-workout')}>Тренировка</button>
-            <button onClick={() => handleAddWidget('training-progress')}>Прогресс</button>
+            <button onClick={() => handleAddWidget('Тренировки')}>
+                Виджет тренировок
+            </button>
+
             <button onClick={handleBackToMain}>Назад</button>
         </div>
     );
@@ -61,7 +70,7 @@ export const Modal = ({ onAddWidget }: ModalProps) => {
                 className={styles.categoryButton} 
                 onClick={() => setCurrentContent('training')}
             >
-                Тренировки
+                Тренировки и Шаги
             </button>
         </div>
     );

@@ -7,6 +7,9 @@ import { changeVisible } from "../../app/model/features/modal/modalSlice";
 import { Modal } from "../modal/Modal";
 import { addWidget, removeWidget } from "../../app/model/features/widgets/widgetsSlice";
 
+
+
+
 export const Desk = () => {
     const modal = useSelector((state: RootState) => state.modal.value)
     const widgets = useSelector((state: RootState) => state.widgets.value)
@@ -16,8 +19,8 @@ export const Desk = () => {
         dispatch(changeVisible()) 
     }
 
-    const handleAddWidgetConfirmed = (type: string) => {
-        dispatch(addWidget(type))
+    const handleAddWidgetConfirmed = (type: string, component: React.ComponentType) => {
+        dispatch(addWidget({ type, component }))
     }
 
     const handleRemoveWidget = (id: string) => { 
@@ -29,8 +32,9 @@ export const Desk = () => {
             <div className={styles.desk}>
                 {widgets.map(widget => (
                     <Widget 
-                        key={widget.id} 
+                        key={widget.id}
                         type={widget.type}
+                        component={widget.component}
                         onRemove={() => handleRemoveWidget(widget.id)}
                     />
                 ))}

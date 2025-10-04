@@ -2,10 +2,10 @@ import styles from "./Desk.module.scss"
 import { Widget } from "./widget/Widget"
 import { AddWidget } from "./addWidget/AddWidget";
 import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../../redux/store";
-import { changeVisible } from "../../redux/features/modal/modalSlice";
+import type { RootState } from "../../app/model/store";
+import { changeVisible } from "../../app/model/features/modal/modalSlice";
 import { Modal } from "../modal/Modal";
-import { addWidget, removeWidget } from "../../redux/features/widgets/widgetsSlice";
+import { addWidget, removeWidget } from "../../app/model/features/widgets/widgetsSlice";
 
 export const Desk = () => {
     const modal = useSelector((state: RootState) => state.modal.value)

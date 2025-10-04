@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import styles from "./Modal.module.scss";
-import { changeVisible } from "../../redux/features/modal/modalSlice";
+import { changeVisible } from "./../../app/model/features/modal/modalSlice";
 
 interface ModalProps {
     onAddWidget: (type: string) => void;

@@ -1,6 +1,8 @@
 body{
     padding: 0;
     margin: 0;
+    font-family: "Roboto", sans-serif;
+
 }
 
 ul, li {
@@ -10,8 +12,15 @@ ul, li {
 }
 
 .app{   
+    background-color: red;
+     background-image: url('/assets/img/back.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
-    background-color: red;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
     display: flex;
 }

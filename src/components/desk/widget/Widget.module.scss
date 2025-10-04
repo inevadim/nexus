@@ -1,6 +1,11 @@
 .widget{
     height: 250px;
     width: 250px;
-    background-color: red;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(108, 194, 252, 0.35);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
     margin: 20px;
+    padding: 5px;
 }

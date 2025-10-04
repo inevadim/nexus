@@ -1,12 +1,14 @@
 import styles from "./App.module.scss";
-import { Desk } from "@/common/components/desk/Desk";
-import { LeftBar } from "@/common/components/leftBar/LeftBar";
+import { Desk } from "@/common/components";
+import { LeftBar } from "@/components/leftBar/LeftBar";
 
-export const App = () => {
+function App() {
   return (
     <div className={styles.app}>
       <LeftBar />
       <Desk />
     </div>
   );
-};
+}
+
+export default App;

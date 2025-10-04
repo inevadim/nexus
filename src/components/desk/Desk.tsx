@@ -1,10 +1,10 @@
 import styles from "./Desk.module.scss";
-import { Widget } from "./widget/Widget";
-import { AddWidget } from "./addWidget/AddWidget";
+import { Widget } from "@/common/components";
+import { AddWidget } from "@/common/components";
 import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "@/app/model/redux/store";
+import type { RootState } from "@/app/model/store";
 import { changeVisible } from "@/app/model/features/modal/modalSlice";
-import { Modal } from "@/components/modal/Modal";
+import { Modal } from "@/common/components/modal/Modal";
 import {
   addWidget,
   removeWidget,
@@ -19,8 +19,11 @@ export const Desk = () => {
     dispatch(changeVisible());
   };
 
-  const handleAddWidgetConfirmed = (type: string) => {
-    dispatch(addWidget(type));
+  const handleAddWidgetConfirmed = (
+    type: string,
+    component: React.ComponentType
+  ) => {
+    dispatch(addWidget({ type, component }));
   };
 
   const handleRemoveWidget = (id: string) => {
@@ -34,6 +37,7 @@ export const Desk = () => {
           <Widget
             key={widget.id}
             type={widget.type}
+            component={widget.component}
             onRemove={() => handleRemoveWidget(widget.id)}
           />
         ))}

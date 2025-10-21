@@ -1,12 +1,12 @@
-import styles from './App.module.scss'
-import { Desk } from './components/desk/Desk'
-import { LeftBar } from './components/leftBar/LeftBar'
+import styles from "./App.module.scss"
+import { LeftBar, Desk } from "@/components"
 
 function App() {
   return (
     <div className={styles.app}>
       <LeftBar />
       <Desk />
+      {/* <AddWidget /> */}
     </div>
   )
 }

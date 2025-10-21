@@ -1,26 +1,26 @@
-body{
-    padding: 0;
-    margin: 0;
-    font-family: "Roboto", sans-serif;
-
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
-ul, li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.app{   
-    background-color: red;
-     background-image: url('/assets/img/back.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+.app {
+  background-color: red;
+  background-image: url("/assets/img/back.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }

@@ -1,4 +1,10 @@
-export { Desk } from "./desk/Desk";
-export { Widget } from "./desk/widget/Widget";
-export { FullWidget } from "./desk/fullWidget/FullWidget";
-export { AddWidget } from "./desk/addWidget/AddWidget";
+export { Modal } from "./modal/Modal"
+export { Settings } from "./Settings/Settings"
+export { User } from "./User/User"
+export { LeftBar } from "./leftBar/LeftBar"
+export { Desk } from "./desk/Desk"
+export { PageNotFound } from "./PageNotFound/PageNotFound"
+export { ProtectedRoutes } from "./ProtectedRoutes/ProtectedRoutes"
+export { Widget } from "./desk/widget/Widget"
+export { FullWidget } from "./desk/fullWidget/FullWidget"
+export { AddWidget } from "./desk/addWidget/AddWidget"

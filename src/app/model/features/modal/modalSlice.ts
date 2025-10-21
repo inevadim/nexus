@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit"
 
 export interface ModalState {
   value: boolean
@@ -9,14 +9,18 @@ const initialState: ModalState = {
 }
 
 export const modalSlice = createSlice({
-  name: 'modal',
+  name: "modal",
   initialState,
   reducers: {
-    changeVisible: (state) => {
-      state.value = !state.value 
+    changeVisible: state => {
+      state.value = !state.value
     },
+  },
+  selectors: {
+    SelectModalValue: state => state.value,
   },
 })
 
 export const { changeVisible } = modalSlice.actions
+export const { SelectModalValue } = modalSlice.selectors
 export default modalSlice.reducer

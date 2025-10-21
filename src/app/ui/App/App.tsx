@@ -1,14 +1,15 @@
-import styles from "./App.module.scss";
-import { Desk } from "@/common/components";
-import { LeftBar } from "@/components/leftBar/LeftBar";
+import { Routing } from "@/common/routing"
+import styles from "./App.module.scss"
+import { Desk, LeftBar } from "@/common/components"
 
 function App() {
   return (
     <div className={styles.app}>
       <LeftBar />
-      <Desk />
+      {/* <Desk /> */}
+      <Routing />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

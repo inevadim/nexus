@@ -1,39 +1,37 @@
-import styles from "./Desk.module.scss";
-import { Widget } from "./widget/Widget";
-import { AddWidget } from "./addWidget/AddWidget";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "@/app/model/redux/store";
-import { changeVisible } from "@/app/model/features/modal/modalSlice";
-import { Modal } from "@/components/modal/Modal";
-import {
-  addWidget,
-  removeWidget,
-} from "@/app/model/features/widgets/widgetsSlice";
+import styles from "./Desk.module.scss"
+import { Widget } from "@/common/components"
+import { AddWidget } from "@/common/components"
+import type { RootState } from "@/app/model/store"
+import { changeVisible } from "@/app/model/features/modal/modalSlice"
+import { Modal } from "@/common/components"
+import { addWidget, removeWidget } from "@/app/model/features/widgets/widgetsSlice"
+import { useAppDispatch, useAppSelector } from "@/common/hooks"
 
 export const Desk = () => {
-  const modal = useSelector((state: RootState) => state.modal.value);
-  const widgets = useSelector((state: RootState) => state.widgets.value);
-  const dispatch = useDispatch();
+  const modal = useAppSelector((state: RootState) => state.modal.value)
+  const widgets = useAppSelector((state: RootState) => state.widgets.value)
+  const dispatch = useAppDispatch()
 
   const handleOpenModal = () => {
-    dispatch(changeVisible());
-  };
+    dispatch(changeVisible())
+  }
 
-  const handleAddWidgetConfirmed = (type: string) => {
-    dispatch(addWidget(type));
-  };
+  const handleAddWidgetConfirmed = (type: string, component: React.ComponentType) => {
+    dispatch(addWidget({ type, component }))
+  }
 
   const handleRemoveWidget = (id: string) => {
-    dispatch(removeWidget(id));
-  };
+    dispatch(removeWidget(id))
+  }
 
   return (
     <div className={styles.wrapDesk}>
       <div className={styles.desk}>
-        {widgets.map((widget) => (
+        {widgets.map(widget => (
           <Widget
             key={widget.id}
             type={widget.type}
+            component={widget.component}
             onRemove={() => handleRemoveWidget(widget.id)}
           />
         ))}
@@ -46,5 +44,5 @@ export const Desk = () => {
       </div>
       {modal && <Modal onAddWidget={handleAddWidgetConfirmed} />}
     </div>
-  );
-};
+  )
+}

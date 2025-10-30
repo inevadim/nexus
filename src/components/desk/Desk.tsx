@@ -7,6 +7,8 @@ import { changeVisible } from "@/app/model/features/modal/modalSlice"
 import { Modal } from "../modal/Modal"
 import { addWidget, removeWidget } from "@/app/model/features/widgets/widgetsSlice"
 import { Button } from "@/components/ui/button"
+import { ChartRadialText } from "@/common/components/progresBar/circleBar/CircleBar"
+import { CircleProgress } from "@/common/components/progresBar/circleBar/CircleBar2"
 
 export const Desk = () => {
   const modal = useSelector((state: RootState) => state.modal.value)
@@ -46,6 +48,9 @@ export const Desk = () => {
           <Button>Default</Button>
           <Button variant={"secondary"}>Secondary</Button>
           <Button variant={"ghost"}>Ghost</Button>
+        </div>
+        <div className='flex flex-row items-center justify-center gap-5'>
+          <CircleProgress value={50} size={200} max={200} />
         </div>
       </div>
       {modal && <Modal onAddWidget={handleAddWidgetConfirmed} />}

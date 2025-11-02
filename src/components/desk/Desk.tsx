@@ -6,7 +6,7 @@ import type { RootState } from "@/app/model/store"
 import { changeVisible } from "@/app/model/features/modal/modalSlice"
 import { Modal } from "../modal/Modal"
 import { addWidget, removeWidget } from "@/app/model/features/widgets/widgetsSlice"
-import { CircleProgress } from "@/common/components/progresBar/circleBar/CircleProgress"
+import { CircleProgress } from "@/common/components/progresBar/arcProgress/ArcProgress"
 
 export const Desk = () => {
   const modal = useSelector((state: RootState) => state.modal.value)
@@ -42,7 +42,7 @@ export const Desk = () => {
             <AddWidget />
           </div>
         )}
-        <CircleProgress value={10} />
+        <CircleProgress value={50} max={100} arcLength={359} variant="warning" />
       </div>
       {modal && <Modal onAddWidget={handleAddWidgetConfirmed} />}
     </div>

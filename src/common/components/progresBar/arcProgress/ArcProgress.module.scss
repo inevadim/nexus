@@ -1,0 +1,68 @@
+@mixin shared-variables {
+  --color-track: #e0e0e0;
+  --color-text: #000;
+  --color-text-secondary: #363636;
+}
+
+.container {
+  @include shared-variables;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+}
+
+.track {
+  stroke: var(--color-track, #e0e0e0);
+  opacity: 0.3;
+}
+
+.indicator {
+  stroke: currentColor;
+  transition: stroke-dashoffset 0.3s ease;
+  transform: rotate(0deg);
+  transform-origin: center;
+}
+
+.labelsContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.valueLabel {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color-text, #000);
+}
+
+.goalLabel {
+  font-size: 14px;
+  color: var(--color-text-secondary, #000);
+  margin-top: 0.25em;
+}
+
+// Варианты цветов
+.variant--default {
+  color: #3b82f6;
+}
+
+.variant--success {
+  color: #10b981;
+}
+
+.variant--warning {
+  color: #f59e0b;
+}
+
+.variant--danger {
+  color: #ef4444;
+}

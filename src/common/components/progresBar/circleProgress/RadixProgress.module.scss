@@ -1,0 +1,74 @@
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  // Варианты стилей
+  &.variant--default {
+    --progress-color: #3b82f6;
+  }
+
+  &.variant--success {
+    --progress-color: #10b981;
+  }
+
+  &.variant--warning {
+    --progress-color: #f59e0b;
+  }
+
+  &.variant--danger {
+    --progress-color: #f5130b;
+  }
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.track {
+  fill: none;
+  stroke: #e5e7eb;
+  stroke-width: 8;
+}
+
+.indicator {
+  fill: none;
+  stroke: var(--progress-color);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.label {
+  position: absolute;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.valueLabel {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1;
+}
+
+.goalLabel {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1;
+}
+
+.labelsContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+}

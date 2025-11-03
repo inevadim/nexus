@@ -7,6 +7,7 @@ import { changeVisible } from "@/app/model/features/modal/modalSlice"
 import { Modal } from "../modal/Modal"
 import { addWidget, removeWidget } from "@/app/model/features/widgets/widgetsSlice"
 import { CircleProgress } from "@/common/components/progresBar/arcProgress/ArcProgress"
+import { LinearProgress } from "@/common/components/progresBar/linearProgress/LinearProgress"
 
 export const Desk = () => {
   const modal = useSelector((state: RootState) => state.modal.value)
@@ -43,6 +44,7 @@ export const Desk = () => {
           </div>
         )}
         <CircleProgress value={50} max={100} arcLength={359} variant="warning" />
+        <LinearProgress value={50} variant="warning" height={15} />
       </div>
       {modal && <Modal onAddWidget={handleAddWidgetConfirmed} />}
     </div>

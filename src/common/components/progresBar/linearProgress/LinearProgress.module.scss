@@ -4,14 +4,15 @@
   --color-text-secondary: #363636;
 }
 
-.wrapper {
+.container {
   @include shared-variables;
   width: 100%;
 }
 
-.container {
+.wrapper {
   position: relative;
   width: 100%;
+  height: 100%;
   overflow: hidden;
   border-radius: 9999px;
   background: transparent;

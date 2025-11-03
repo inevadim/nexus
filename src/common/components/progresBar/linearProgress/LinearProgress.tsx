@@ -6,6 +6,7 @@ interface LinearProgressProps {
   value: number
   max?: number
   height?: number
+  width?: number
   variant?: "default" | "success" | "warning" | "danger"
   showLabels?: boolean
 }
@@ -13,20 +14,21 @@ interface LinearProgressProps {
 export const LinearProgress: React.FC<LinearProgressProps> = ({
   value,
   max = 100,
-  height = 8,
+  height = 15,
+  width = 100,
   variant = "default",
   showLabels = true,
 }) => {
   const progress = (value / max) * 100
 
   return (
-    <div className={styles.wrapper}>
-      <Progress.Root
-        className={`${styles.container} ${styles[`variant--${variant}`]}`}
-        style={{ height }}
-        value={value}
-        max={max}
-      >
+    <Progress.Root
+      className={`${styles.container} ${styles[`variant--${variant}`]}`}
+      style={{ height, width }}
+      value={value}
+      max={max}
+    >
+      <div className={styles.wrapper}>
         {/* Фоновая дорожка */}
         <div className={styles.track} />
 
@@ -34,7 +36,7 @@ export const LinearProgress: React.FC<LinearProgressProps> = ({
         <Progress.Indicator asChild>
           <div className={styles.indicator} style={{ width: `${progress}%` }} />
         </Progress.Indicator>
-      </Progress.Root>
+      </div>
 
       {/* Метки */}
       {showLabels && (
@@ -43,6 +45,6 @@ export const LinearProgress: React.FC<LinearProgressProps> = ({
           <div className={styles.maxLabel}>/ {Math.round(max)}</div>
         </div>
       )}
-    </div>
+    </Progress.Root>
   )
 }

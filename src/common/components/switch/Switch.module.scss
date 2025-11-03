@@ -1,0 +1,107 @@
+.root {
+  all: unset;
+  display: inline-block;
+  position: relative;
+  background-color: var(--color-background, #f5f5f5);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  // Размеры
+  &.size--small {
+    width: 36px;
+    height: 20px;
+  }
+
+  &.size--medium {
+    width: 44px;
+    height: 24px;
+  }
+
+  &.size--large {
+    width: 52px;
+    height: 28px;
+  }
+
+  // Состояние checked
+  &[data-state="checked"] {
+    background-color: var(--color-checked, #3b82f6);
+  }
+
+  // Отключенное состояние
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &[data-state="checked"] {
+      background-color: var(--color-disabled, #a0a0a0);
+    }
+  }
+
+  // Фокус
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+
+.thumb {
+  display: block;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+
+  // Начальная позиция (unchecked)
+  .root.size--small & {
+    width: 16px;
+    height: 16px;
+    transform: translateX(2px);
+  }
+
+  .root.size--medium & {
+    width: 20px;
+    height: 20px;
+    transform: translateX(2px);
+  }
+
+  .root.size--large & {
+    width: 24px;
+    height: 24px;
+    transform: translateX(2px);
+  }
+
+  // Позиция когда checked
+  .root[data-state="checked"].size--small & {
+    transform: translateX(18px); // 36px - 16px - 2px
+  }
+
+  .root[data-state="checked"].size--medium & {
+    transform: translateX(22px); // 44px - 20px - 2px
+  }
+
+  .root[data-state="checked"].size--large & {
+    transform: translateX(26px); // 52px - 24px - 2px
+  }
+}
+
+// Варианты цветов
+.variant--default {
+  --color-checked: #3b82f6;
+}
+
+.variant--success {
+  --color-checked: #10b981;
+}
+
+.variant--warning {
+  --color-checked: #f59e0b;
+}
+
+.variant--danger {
+  --color-checked: #ef4444;
+}
+
+.disabled {
+  --color-checked: #a0a0a0;
+}

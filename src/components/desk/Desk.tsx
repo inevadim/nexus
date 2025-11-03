@@ -8,10 +8,14 @@ import { Modal } from "../modal/Modal"
 import { addWidget, removeWidget } from "@/app/model/features/widgets/widgetsSlice"
 import { CircleProgress } from "@/common/components/progresBar/arcProgress/ArcProgress"
 import { LinearProgress } from "@/common/components/progresBar/linearProgress/LinearProgress"
+import { ArcSwitch } from "@/common/components/switch/Switch"
+import { useState } from "react"
 
 export const Desk = () => {
   const modal = useSelector((state: RootState) => state.modal.value)
   const widgets = useSelector((state: RootState) => state.widgets.value)
+  const [isChecked, setIsChecked] = useState(false)
+
   const dispatch = useDispatch()
 
   const handleOpenModal = () => {
@@ -43,8 +47,10 @@ export const Desk = () => {
             <AddWidget />
           </div>
         )}
+
         <CircleProgress value={50} max={100} arcLength={359} variant="warning" />
         <LinearProgress value={50} variant="warning" height={15} />
+        <ArcSwitch checked={isChecked} onCheckedChange={setIsChecked} variant="warning" />
       </div>
       {modal && <Modal onAddWidget={handleAddWidgetConfirmed} />}
     </div>
